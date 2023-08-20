@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jobs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Your other HTML content here -->
+  <!-- HEADER AND NAV -->
+  <div class="header-bar">
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="index.html">Inventory</a>
+      <div id="web-background" class="web-background"> </div>
+    </div>
+    
+    <!-- Use any element to open the sidenav -->
+    <div class="navOpen">
+      <span style="font-size:40px;cursor:pointer" onclick="openNav()">&#9776; </span>
+    </div>
+
+    <div class="header-image">
+      <img src="AquazulLogo1.png">
+    </div>
+
+    <p>Jobs</p>
+  </div>
+
+
+  <!-- BUTTONS -->
+
+  
+  <div class="button-container">
+  <button id="newJob">Add New Job</button>
+  <button id="adjustMat">Adjust Material Amount for Job</button>
+  <button id="newMat">Add New Material to Job</button>
+  <button id="closeOut">Close Out Job</button>
+  </div> 
+  
+  <div id="newJobModal" class="modal">
+    <div id="modalContent" class="modal-content">
+      <a href="javascript:void(0)" class="closebtn" onclick="newJobClose()">&times;</a>
+      <form id="modalForm" onsubmit="event.preventDefault(); processNewJobForm(this);">
+        <h1>Add New Job</h1>
+
+        <label for="clientName">Enter the Name of the Client:</label>
+        <input type="text" id="clientName" name="clientName">
+        <br />
+        <p class="gray">Select the Material to Add.</p>
+        <label for="newJobcategory">Category:</label>
+        <select id="newJobcategory">
+          <!-- Options will be dynamically added here -->
+        </select>
+  
+        <label for="newJobSubType">SubType:</label>
+        <select id="newJobSubType">
+          <!-- Options will be dynamically added here -->
+        </select>
+
+        <p class="gray">Enter value for Material.</p>
+        <label for="amountOf">Amount: </label>
+        <input type="number" name="amountOf" id="amountOf" />
+        <br />
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="adjustMatModal" class="modal">
+    <div id="modalContent" class="modal-content">
+      <a href="javascript:void(0)" class="closebtn" onclick="adjustMatClose()">&times;</a>
+      <form id="modalForm" onsubmit="event.preventDefault(); processAdjustMatForm(this);">
+        <h1>Adjust Material For Job</h1>
+
+        <label for="adjustMatJob">Select Job:</label>
+        <select id="adjustMatJob">
+          <!-- Options will be dynamically added here -->
+        </select>
+
+        <label for="adjustMatCategory">Category:</label>
+        <select id="adjustMatCategory">
+          <!-- Options will be dynamically added here -->
+        </select>
+  
+        <label for="adjustMatSubType">SubType:</label>
+        <select id="adjustMatSubType">
+          <!-- Options will be dynamically added here -->
+        </select>
+
+        <p class="gray">Enter value for Material.</p>
+        <label for="amountOf">Amount: </label>
+        <input type="number" name="amountOf" id="amountOf" />
+        <br />
+        <input type="radio" id="ChangeInv" name="ChangeInv" value="Add">
+        <label for="ChangeInv"> Add</label>
+        <input type="radio" id="ChangeInv" name="ChangeInv" value="Remove">
+        <label for="ChangeInv"> Remove</label><br />
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="newMatModal" class="modal">
+    <div id="modalContent" class="modal-content">
+      <a href="javascript:void(0)" class="closebtn" onclick="newMatClose()">&times;</a>
+      <form id="modalForm" onsubmit="event.preventDefault(); processNewMatForm(this);">
+        <h1>New Material For Job</h1>
+
+        <label for="newMatJob">Select Job:</label>
+        <select id="newMatJob">
+          <!-- Options will be dynamically added here -->
+        </select>
+
+        <label for="newMatCategory">Category:</label>
+        <select id="newMatCategory">
+          <!-- Options will be dynamically added here -->
+        </select>
+  
+        <label for="newMatSubType">SubType:</label>
+        <select id="newMatSubType">
+          <!-- Options will be dynamically added here -->
+        </select>
+
+        <p class="gray">Enter value for Material.</p>
+        <label for="amountOf">Amount: </label>
+        <input type="number" name="amountOf" id="amountOf" />
+        <br />
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="closeOutModal" class="modal">
+    <div id="modalContent" class="modal-content">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeOutClose()">&times;</a>
+      <form id="modalForm" onsubmit="event.preventDefault(); processCloseOutForm(this);">
+        <h1>Close Out a Job</h1>
+
+        <label for="closeOutJob">Select Job:</label>
+        <select id="closeOutJob">
+          <!-- Options will be dynamically added here -->
+        </select>
+        <br />
+        <br />
+        <br />
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+
+
+  <!-- TABLE -->
+  <!-- Table to display inventory data -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Client Name</th>
+          <th>Category</th>
+          <th>SubType</th>
+          <th>Amount Needed</th>
+          <th>Latest Change</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="jobs-table-body">
+        <!-- Table rows will be dynamically generated here -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Load your script.js file -->
+  <!-- <script src="InventoryData.js"></script> -->
+  <script src="jobscript.js"></script>
+</body>
+</html>

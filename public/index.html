@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Your other HTML content here -->
+
+  <div id="passwordOverlay">
+    <form onsubmit="event.preventDefault(); processPasswordForm();">
+        <input type="password" id="yourPasswordInputId">
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+  <!-- HEADER AND NAV -->
+  <div class="header-bar">
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="jobs.html">Jobs</a>
+      <div id="web-background" class="web-background"> </div>
+    </div>
+    
+    <!-- Use any element to open the sidenav -->
+    <div class="navOpen">
+      <span style="font-size:40px;cursor:pointer" onclick="openNav()">&#9776; </span>
+    </div>
+
+    <div class="header-image">
+      <img src="AquazulLogo1.png">
+    </div>
+
+    <p>Inventory</p>
+  </div>
+
+  <!-- BUTTONS -->
+  
+  <div class="button-container">
+  <button id="adjustButton">Add/Remove Amount</button>
+  <button id="SubTypeButton">Add New SubType to Existing Category</button>
+  <button id="CategoryButton">Add New Category</button>
+  </div> 
+
+  <div id="adjustModal" class="modal">
+    <div id="modalContent" class="modal-content">
+      <a href="javascript:void(0)" class="closebtn" onclick="adjustClose()">&times;</a>
+      <form id="modalForm" onsubmit="event.preventDefault(); processAdjustForm(this);">
+        <h1> Add/Remove Inventory </h1>
+        <label for="adjustcategory">Category:</label>
+        <select id="adjustcategory">
+          <!-- Options will be dynamically added here -->
+        </select>
+  
+        <label for="subType">SubType:</label>
+        <select id="subType">
+          <!-- Options will be dynamically added here -->
+        </select>
+
+        <p class="gray">Enter value for material.</p>
+        <label for="amountOf">Amount: </label>
+        <input type="number" name="amountOf" id="amountOf" />
+        <br />
+        <br />
+        <input type="radio" id="ChangeInv" name="ChangeInv" value="Add">
+        <label for="ChangeInv"> Add</label><
+        <input type="radio" id="ChangeInv" name="ChangeInv" value="Remove">
+        <label for="ChangeInv"> Remove</label><br />
+        <br />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="SubTypeModal" class="modal">
+    <div id="modalContent" class="modal-content">
+      <a href="javascript:void(0)" class="closebtn" onclick="SubTypeClose()">&times;</a>
+      <form id="modalForm" onsubmit="event.preventDefault(); processNewSubForm(this);">
+        <h1> Add New SubType </h1>
+        <label for="newSubcategory">Category:</label>
+        <select id="newSubcategory">
+          <!-- Options will be dynamically added here -->
+        </select>
+
+        <br />
+        <br />
+
+        <label for="NewSubType">Enter the New SubType:</label>
+        <input type="text" id="NewSubType" name="NewSubType">
+
+        <p class="gray">Enter value for material.</p>
+        <label for="amountOf">Amount: </label>
+        <input type="number" name="amountOf" id="amountOf" />
+        <br />
+        <br />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="CategoryModal" class="modal">
+    <div id="modalContent" class="modal-content">
+      <a href="javascript:void(0)" class="closebtn" onclick="CategoryClose()">&times;</a>
+      <form id="modalForm" onsubmit="event.preventDefault(); processNewCatForm(this);">
+        <h1> Add New Category </h1>
+        <label for="NewCategory">Enter the New Category:</label>
+        <input type="text" id="NewCategory" name="NewCategory">
+
+        <br />
+        <br />
+
+        <label for="InitialSub">Enter a SubType:</label>
+        <input type="text" id="InitialSub" name="InitialSub">
+
+        <br />
+        <br />
+
+        <p class="gray">Enter value for material.</p>
+        <label for="amountOf">Amount: </label>
+        <input type="number" name="amountOf" id="amountOf">
+        <br />
+        <br />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  
+
+  <!-- TABLE -->
+  <!-- Table to display inventory data -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>SubType</th>
+          <th>Warehouse Amount</th>
+          <th>Total Needed</th>
+          <th>Difference</th>
+          <th>Latest Change</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <!-- Table rows will be dynamically generated here -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Load your script.js file -->
+  <!-- <script src="InventoryData.js"></script> -->
+  <script src="script.js"></script>
+</body>
+</html>
