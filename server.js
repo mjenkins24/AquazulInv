@@ -8,51 +8,51 @@ app.use(express.json());
 const port = 5500;
 app.use(express.static('public'));
 
-const PASSWORD = 'AquazCCSJ1994';
+// const PASSWORD = 'AquazCCSJ1994';
 
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(session({
-    secret: 'someRandomSecret',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 60000 * 30 } // session will last for 30 minutes
-}));
+// app.use(session({
+//     secret: 'someRandomSecret',
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: { maxAge: 60000 * 30 } // session will last for 30 minutes
+// }));
 
-// Middleware to check authentication
-app.use((req, res, next) => {
-    if (req.path === '/login' || req.session.authenticated) {
-        return next();
-    }
-    res.redirect('/login'); // if not authenticated, redirect to login
-});
+// // Middleware to check authentication
+// app.use((req, res, next) => {
+//     if (req.path === '/login' || req.session.authenticated) {
+//         return next();
+//     }
+//     res.redirect('/login'); // if not authenticated, redirect to login
+// });
 
-app.get('/login', (req, res) => {
-    // Serve your login page
-    res.sendFile(__dirname + '/login.html');
-});
+// app.get('/login', (req, res) => {
+//     // Serve your login page
+//     res.sendFile(__dirname + '/login.html');
+// });
 
-app.post('/login', (req, res) => {
-    if (req.body.password === PASSWORD) {
-        req.session.authenticated = true;
-        return res.redirect('/'); // redirect to the main page
-    }
-    res.status(401).send('Wrong password'); // or redirect to the login page with an error message
-});
+// app.post('/login', (req, res) => {
+//     if (req.body.password === PASSWORD) {
+//         req.session.authenticated = true;
+//         return res.redirect('/'); // redirect to the main page
+//     }
+//     res.status(401).send('Wrong password'); // or redirect to the login page with an error message
+// });
 
-app.get('/', (req, res) => {
-    // Serve the main content for authenticated users
-    res.send('Welcome to the main page!');
-});
+// app.get('/', (req, res) => {
+//     // Serve the main content for authenticated users
+//     res.send('Welcome to the main page!');
+// });
 
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('database.db', (err) => {
-  if (err) {
-    console.error('Error connecting to database:', err.message);
-  } else {
-    console.log('Connected to the SQLite database.');
-  }
-});
+// const sqlite3 = require('sqlite3').verbose();
+// const db = new sqlite3.Database('database.db', (err) => {
+//   if (err) {
+//     console.error('Error connecting to database:', err.message);
+//   } else {
+//     console.log('Connected to the SQLite database.');
+//   }
+// });
 
 
 
