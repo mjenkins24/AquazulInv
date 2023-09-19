@@ -1,12 +1,12 @@
 // PASSWORD //
 
-window.onload = function() {
-  const isAuthenticated = sessionStorage.getItem("authenticated");
+// window.onload = function() {
+//   const isAuthenticated = sessionStorage.getItem("authenticated");
 
-  if (isAuthenticated !== "true") {
-      window.location.href = "login.html"; // Redirect to the login page if not authenticated
-  }
-}
+//   if (isAuthenticated !== "true") {
+//       window.location.href = "login.html"; // Redirect to the login page if not authenticated
+//   }
+// }
 
 // BUTTONS FOR NAV //
 
